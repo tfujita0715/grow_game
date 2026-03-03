@@ -1,5 +1,4 @@
 import pyxel
-from screens import Screen01
 from screens.screenManager import ScreenManager
 
 class App:
@@ -10,19 +9,19 @@ class App:
         pyxel.mouse(True)
         
         #画面遷移をインスタンス化
-        self.scmanager = ScreenManager
+        self.scmanager = ScreenManager()
         
         pyxel.run(self.update, self.draw)
 
     def update(self):
-        self.screen.update()
+        self.scmanager.update()
         #sample画面遷移 これはspace
         #if pyxel.btnp(pyxel.KEY_SPACE):
             #self.screen = Screen01() 
 
     def draw(self):
         pyxel.cls(0)
-        self.manager.draw()
+        self.scmanager.draw()
 
 def main():
     print("Game Started!")

@@ -1,16 +1,19 @@
 import pyxel
-
+from .base import BaseScreen
 from .base import Setting
 
-class Screen01(Setting):
+class title(Setting):
     def __init__(self):
         super().__init__()
-        self.message = "This is sample"
+        self.is_started = False
+        self.next_screen = None
 
     def update(self):
         self.update_common()
+        if self.number:
+            self.next_screen = "setting"
 
     def draw(self):
-        pyxel.text(160, 120, "debug01",5)
-        pyxel.text(100, 120, self.message, 5)
+        pyxel.text(80, 120, "title", 20)
+        pyxel.text(190, 120, "plz push space",5)
         self.draw_common()
