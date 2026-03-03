@@ -3,8 +3,8 @@ from .base import BaseScreen
 from .base import Setting
 
 class title(Setting):
-    def __init__(self):
-        super().__init__()
+    def __init__(self,game_data):
+        super().__init__(game_data)
         self.is_started = False
 
     def update(self):
