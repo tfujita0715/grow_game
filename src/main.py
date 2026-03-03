@@ -5,7 +5,7 @@ class App:
     def __init__(self):
         #initは1回のみ。サイズも固定する。
         #他で初期化するとクラッシュします
-        pyxel.init(256, 256, title="grow Game")
+        pyxel.init(256, 256, title="grow Game",quit_key = pyxel.KEY_NONE)#esc無効化
         pyxel.mouse(True)
         
         #画面遷移をインスタンス化

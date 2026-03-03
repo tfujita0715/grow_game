@@ -6,7 +6,6 @@ class title(Setting):
     def __init__(self):
         super().__init__()
         self.is_started = False
-        self.next_screen = None
 
     def update(self):
         self.update_common()

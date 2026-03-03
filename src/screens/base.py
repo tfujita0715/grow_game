@@ -10,10 +10,11 @@ class BaseScreen:
         pass
 
     def get_next_screen(self):
-        return self.next_screen_type
+        return self.next_screen
 
 class Setting(BaseScreen):
     def __init__(self):
+        super().__init__()
         self.number = False
 
     def update_common(self):
@@ -26,13 +27,14 @@ class Setting(BaseScreen):
         pyxel.rect(0, 0, 64, 64, 8) # x, y, w, h, col
         pyxel.text(5, 25, "SETTING", 7)
     
-class SettingScreen():
+class SettingScreen(BaseScreen):
     def __init__(self):
+        super().__init__()
         self.next_screen = None
 
     def update(self):
         if pyxel.btnp(pyxel.KEY_ESCAPE):
-            self.next_screen = "title"
+            self.next_screen = "back" #元の画面に戻るときはback
 
     def draw(self):
         pyxel.cls(2)
