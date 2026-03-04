@@ -28,6 +28,7 @@ class MatchMaking:
         pyxel.text(97, 160, "結婚", 0)
         #TODOキャラ画のサイズ確認てか作る
 
+        #検査ボタン押されたとき
         if self.test_btn == True:
             #TODOアイテムがあれが、遺伝子検査の結果を表示して、キット４→３（キットの数を表示）
             pass
