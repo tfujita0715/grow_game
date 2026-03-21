@@ -1,5 +1,4 @@
 import pyxel
-from .base import BaseScreen
 from .base import Setting
 
 class title(Setting):
@@ -10,7 +9,7 @@ class title(Setting):
     def update(self):
         self.update_common()
         if self.number:
-            self.next_screen = "setting"
+            self.next_screen = "room"
 
     def draw(self):
         pyxel.text(80, 120, "title", 20)

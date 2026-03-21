@@ -1,8 +1,9 @@
 import pyxel
 
 #画面インポート
-from .DS01_title import title
+from .DS_01_title import title
 from .base import SettingScreen
+from .DS_02_room import RoomScreen
 #ここで画面遷移を行います。
 # インポート例from .settingScreen import SettingScreen 
 
@@ -14,7 +15,8 @@ class ScreenManager:
         #画面とクラスの対応表
         self.screen_map = {
             "title": title,
-            "setting": SettingScreen
+            "setting": SettingScreen,
+            "room": RoomScreen
         }
     def update(self):
         self.current_screen.update()
