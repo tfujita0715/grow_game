@@ -3,6 +3,7 @@ import pyxel
 
 class BaseScreen:
     def __init__(self,game_data):
+        self.game_data = game_data
         self.next_screen = None #Noneの場合は遷移なし
     def update(self):
         pass
@@ -20,7 +21,7 @@ class Setting(BaseScreen):
     def update_common(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
            if 0 <= pyxel.mouse_x <= 64 and 0 <= pyxel.mouse_y <= 64:
-              # ボタンが押されたら遷移先を指定する
+              #ボタンが押されたら遷移先を指定する
             self.next_screen = "setting"
     def draw_common(self):
         pyxel.cls(1) 
@@ -42,12 +43,14 @@ class SettingScreen(BaseScreen):
         
 
     def draw(self):
-        pyxel.cls(2)
-        pyxel.text(80, 120, "SETTING SCREEN (PRESS ESCAPE TO BACK)", 7)
+        pyxel.text(80, 100, f"SETTING - VOLUME: {self.game_data.volume}", 7)
 
-        #音量バー
+        #音量バーの描画
         pyxel.text(80, 120, "VOLUME:", 7)
-        #（枠）
+        #枠を表示
         pyxel.rectb(115, 119, 52, 7, 7)
-        #音量バーロジック
+        #現在の音量（volume * 5 ピクセル分）を塗りつぶす
         pyxel.rect(116, 120, self.game_data.volume * 5, 5, 10)
+
+        pyxel.text(80, 140, "←→key voluemu change", 6)
+        pyxel.text(80, 160, "ESC:back", 6)

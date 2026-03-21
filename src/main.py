@@ -9,7 +9,7 @@ class App:
         pyxel.init(256, 256, title="grow Game",quit_key = pyxel.KEY_NONE)#esc無効化
         pyxel.mouse(True)
         
-        self.game_data = GameData
+        self.game_data = GameData()
         #画面遷移をインスタンス化
         self.scmanager = ScreenManager(self.game_data)
         
