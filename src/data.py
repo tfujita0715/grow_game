@@ -1,6 +1,9 @@
 #状態は辞書型で保存
+
 #キャラクターの情報はここで管理すること。ファイルを使ってデータを保存する場合はjsonを使ってください。
 
 class GameData:
     def __init__(self):
         self.volume = 5
+
+
