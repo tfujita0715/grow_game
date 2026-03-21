@@ -1,33 +1,27 @@
 import pyxel
-from screens import Screen01
+from screens.screenManager import ScreenManager
 
 class App:
     def __init__(self):
-        # 1. initは1回。サイズも固定する
-        pyxel.init(256, 256, title="grow Game")
+        #initは1回のみ。サイズも固定する。
+        #他で初期化するとクラッシュします
+        pyxel.init(256, 256, title="grow Game",quit_key = pyxel.KEY_NONE)#esc無効化
         pyxel.mouse(True)
         
-        # 2. 最初は None（空）にしておき、落ちないように対策する
-        self.screen = None
+        #画面遷移をインスタンス化
+        self.scmanager = ScreenManager()
         
         pyxel.run(self.update, self.draw)
 
     def update(self):
-        # 画面がセットされている時だけ更新する
-        if self.screen is not None:
-            self.screen.update()
-            
-        # 3. カッコをつけて実体を作る（インスタンス化）
-        if pyxel.btnp(pyxel.KEY_SPACE):
-            self.screen = Screen01() 
+        self.scmanager.update()
+        #sample画面遷移 これはspace
+        #if pyxel.btnp(pyxel.KEY_SPACE):
+            #self.screen = Screen01() 
 
     def draw(self):
         pyxel.cls(0)
-        if self.screen is not None:
-            self.screen.draw()
-        else:
-            # 起動直後の画面
-            pyxel.text(80, 120, "PRESS SPACE TO START", 7)
+        self.scmanager.draw()
 
 def main():
     print("Game Started!")

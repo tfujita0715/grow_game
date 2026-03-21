@@ -1,18 +1,44 @@
 import pyxel
 
 #画面インポート
-from .sampleScreen01 import Screen01
-
-
-#現在mainから01を直接呼んでいます。将来的にここから画面遷移を行いま。
-
-# from .settingScreen import SettingScreen 
+from .DS01_title import title
+from .base import SettingScreen
+#ここで画面遷移を行います。
+# インポート例from .settingScreen import SettingScreen 
 
 class ScreenManager:
-    @staticmethod
-    def get_screen(screen_name):
-        if screen_name == "01":
-            return Screen01()
-        # if screen_name == "setting":
-        #     return SettingScreen()
-        return None
+    def __init__(self):
+        self.current_screen = title()
+        self.before_screen = None #呼び出し元
+        #画面とクラスの対応表
+        self.screen_map = {
+            "title": title,
+            "setting": SettingScreen
+        }
+    def update(self):
+        self.current_screen.update()
+        key = self.current_screen.get_next_screen()
+
+        #元の画面に戻る処理
+        if key == "back":
+            if self.before_screen:
+                self.current_screen = self.before_screen
+                if hasattr(self.current_screen,"number"):
+                    self.current_screen.number = False
+                #baseのnext.screen
+                self.current_screen.next_screen = None
+                self.before_screen = None
+
+        elif key in self.screen_map:
+
+            if key == "setting":
+                self.before_screen = self.current_screen
+
+            #新しい画面に切り替え
+            self.current_screen = self.screen_map[key]()
+            #遷移フラグをクリアしておく
+            self.current_screen.next_screen = None
+
+
+    def draw(self):
+        self.current_screen.draw()
