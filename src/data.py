@@ -2,6 +2,35 @@
 
 #キャラクターの情報はここで管理すること。ファイルを使ってデータを保存する場合はjsonを使ってください。
 
+import json
+import os
+
+class GameData:
+    def __init__(self):
+        self.save_file = "save_data.json"
+        self.volume = 5
+        self.username = "" #空文字なら未設定（初回起動）
+        
+        #起動時にデータを読み込む
+        self.load()
+    
+    def save(self):
+        #現在の状態をJSONに保存する
+        data = {
+            "volume": self.volume,
+            "username": self.username
+        }
+        with open(self.save_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
+
+    def load(self):
+            #JSONから読込
+            if os.path.exists(self.save_file):
+                with open(self.save_file, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    self.volume = data.get("volume", 5)
+                    self.username = data.get("username", "")
+
 class SettingData:
     def __init__(self):
         self.volume = 5

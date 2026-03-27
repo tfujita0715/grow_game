@@ -8,7 +8,7 @@ class title(Setting):
 
     def update(self):
         self.update_common()
-        if self.number:
+        if pyxel.btnp(pyxel.KEY_SPACE):
             self.next_screen = "room"
 
     def draw(self):
