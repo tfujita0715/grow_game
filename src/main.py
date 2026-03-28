@@ -1,5 +1,6 @@
 import pyxel
 from screens.screenManager import ScreenManager
+from screens.toiletSystem import ToiletSystem
 
 class App:
     def __init__(self):
@@ -10,6 +11,7 @@ class App:
         
         #画面遷移をインスタンス化
         self.scmanager = ScreenManager()
+        toilet_system = ToiletSystem()
         
         pyxel.run(self.update, self.draw)
 
@@ -29,3 +31,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    

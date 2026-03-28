@@ -3,6 +3,8 @@ import pyxel
 #画面インポート
 from .DS01_title import title
 from .base import SettingScreen
+from .toiletSystem import ToiletSystem
+from .toiletScreen import ToiletScreen
 #ここで画面遷移を行います。
 # インポート例from .settingScreen import SettingScreen 
 
