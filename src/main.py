@@ -2,8 +2,6 @@ import pyxel
 from screens.screenManager import ScreenManager
 from data import GameData
 
-from screens.base import BaseScreen
-
 class App:
     def __init__(self):
         #initは1回のみ。サイズも固定する。
