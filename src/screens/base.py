@@ -36,6 +36,15 @@ class SettingScreen(BaseScreen):
         if pyxel.btnp(pyxel.KEY_ESCAPE):
             self.next_screen = "back" #元の画面に戻るときはback
 
+        # SHOPボタン
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
+            if 80 < pyxel.mouse_x < 180 and 80 < pyxel.mouse_y < 120:
+                self.next_screen = "shop"
+
     def draw(self):
         pyxel.cls(2)
-        pyxel.text(80, 120, "SETTING SCREEN (PRESS ESCAPE TO BACK)", 7)
+        pyxel.text(90, 40, "SETTING", 7)
+
+        # SHOPボタン
+        pyxel.rect(80, 80, 100, 40, 8)
+        pyxel.text(100, 95, "SHOP", 7)
