@@ -1,9 +1,13 @@
 import pyxel
 
 #画面インポート
-from .DS_01_title import title
 from .base import SettingScreen
+from .DS_01_title import title
 from .DS_02_room import RoomScreen
+from .DS_04_bath import Bath
+from .DS_05_matchmaking import MatchMaking
+from .DS_07_breed import Breed
+
 #ここで画面遷移を行います。
 # インポート例from .settingScreen import SettingScreen 
 
@@ -16,7 +20,10 @@ class ScreenManager:
         self.screen_map = {
             "title": title,
             "setting": SettingScreen,
-            "room": RoomScreen
+            "room": RoomScreen,
+            "bath": Bath,
+            "matchmaking": MatchMaking,
+            "breed": Breed,
         }
     def update(self):
         self.current_screen.update()
