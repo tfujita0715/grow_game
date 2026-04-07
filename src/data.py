@@ -8,9 +8,15 @@ import os
 class GameData:
     def __init__(self):
         self.save_file = "save_data.json"
+        #setting
         self.volume = 5
-        self.username = "" #空文字なら未設定（初回起動）
-        
+        self.username = ""
+        #setting
+        self.money = 0
+        self.hungerLevel = 100   #空腹度
+        self.unko   = 0        #キャッシュ（うんち）
+        self.lifespan   = 100    #寿命
+
         #起動時にデータを読み込む
         self.load()
     
@@ -92,12 +98,7 @@ class CharacterData:
 
 
 
-class GameData:
-    def __init__(self):
-        self.money = 0
-        self.hungerLevel = 100   #空腹度
-        self.unko   = 0        #キャッシュ（うんち）
-        self.lifespan   = 100    #寿命
+
 
 
 

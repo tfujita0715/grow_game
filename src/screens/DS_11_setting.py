@@ -2,9 +2,10 @@ import pyxel
 from .base import BaseScreen
 
 class Setting(BaseScreen):
-    def __init__(self,game_data):
-        super().__init__(game_data)
+    def __init__(self, game_data, chara_data):
+        super().__init__(game_data, chara_data)
         self.number = False
+        self.chara_data = chara_data
 
     def update_common(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
@@ -17,8 +18,8 @@ class Setting(BaseScreen):
         pyxel.text(5, 25, "SETTING", 7)
     
 class SettingScreen(BaseScreen):
-    def __init__(self,game_data):
-        super().__init__(game_data)
+    def __init__(self,game_data, chara_data):
+        super().__init__(game_data, chara_data)
         self.next_screen = None
 
     def update(self):
