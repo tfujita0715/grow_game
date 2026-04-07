@@ -95,9 +95,9 @@ class CharacterData:
 class GameData:
     def __init__(self):
         self.money = 0
-        self.hungerLevel    #空腹度
-        self.unko           #キャッシュ（うんち）
-        self.lifespan       #寿命
+        self.hungerLevel = 100   #空腹度
+        self.unko   = 0        #キャッシュ（うんち）
+        self.lifespan   = 100    #寿命
 
 
 

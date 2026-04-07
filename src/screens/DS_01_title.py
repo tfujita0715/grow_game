@@ -1,5 +1,5 @@
 import pyxel
-from .base import Setting
+from .DS_11_setting import Setting
 
 class title(Setting):
     def __init__(self,game_data):
