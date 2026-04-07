@@ -1,10 +1,11 @@
 import pyxel
-from .base import Setting
+from .DS_11_setting import Setting
 
 class title(Setting):
-    def __init__(self,game_data):
-        super().__init__(game_data)
+    def __init__(self, game_data, chara_data):
+        super().__init__(game_data, chara_data)
         self.is_started = False
+        self.chara_data = chara_data
 
     def update(self):
         self.update_common()

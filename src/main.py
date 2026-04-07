@@ -1,9 +1,8 @@
 import pyxel
 from screens.screenManager import ScreenManager
 from data import GameData
-
-from screens.base import BaseScreen
-
+from data import CharacterData
+from data import SettingData
 class App:
     def __init__(self):
         #initは1回のみ。サイズも固定する。
@@ -12,8 +11,11 @@ class App:
         pyxel.mouse(True)
         
         self.game_data = GameData()
+        self.chara_data = CharacterData()
+        self.setting_data = SettingData()
         #画面遷移をインスタンス化
-        self.scmanager = ScreenManager(self.game_data)
+        self.scmanager = ScreenManager(self.game_data,self.chara_data)
+
         
         pyxel.run(self.update, self.draw)
 
