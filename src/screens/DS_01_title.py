@@ -1,7 +1,7 @@
 import pyxel
-from .DS_11_setting import Setting
+from .DS_11_setting import Popup
 
-class title(Setting):
+class title(Popup):
     def __init__(self, game_data, chara_data):
         super().__init__(game_data, chara_data)
         self.is_started = False
