@@ -6,7 +6,6 @@ class Setting(BaseScreen):
     def __init__(self, game_data, chara_data):
         super().__init__(game_data, chara_data)
         self.number = False
-        self.chara_data = chara_data
 
     def update_common(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
@@ -22,6 +21,8 @@ class SettingScreen(BaseScreen):
     def __init__(self,game_data, chara_data):
         super().__init__(game_data, chara_data)
         self.next_screen = None
+        self.game_data = game_data
+
 
     def update(self):
         if pyxel.btnp(pyxel.KEY_LEFT):
@@ -30,6 +31,12 @@ class SettingScreen(BaseScreen):
             self.game_data.volume = min(10, self.game_data.volume + 1)
         if pyxel.btnp(pyxel.KEY_ESCAPE):
             self.next_screen = "back" #元の画面に戻るときはback
+
+        #タイトルに戻るボタン
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
+            # ボタンの範囲 (x: 80~160, y: 180~195) をクリックしたか判定
+            if 80 <= pyxel.mouse_x <= 160 and 180 <= pyxel.mouse_y <= 195:
+                self.next_screen = "title"
         
 
     def draw(self):
@@ -44,3 +51,6 @@ class SettingScreen(BaseScreen):
 
         pyxel.text(80, 140, "←→key voluemu change", 6)
         pyxel.text(80, 160, "ESC:back", 6)
+        #タイトルに戻るボタン
+        pyxel.rect(80, 180, 80, 15, 5) 
+        pyxel.text(88, 185, "BACK TO TITLE", 7)

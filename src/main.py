@@ -1,4 +1,7 @@
+import os
+import sys
 import pyxel
+
 from screens.screenManager import ScreenManager
 from data import GameData
 from data import CharacterData
@@ -32,6 +35,11 @@ class App:
 
 def main():
     print("Game Started!")
+
+    #exeビルド時のおまじないらしい
+    if getattr(sys, 'frozen', False):
+        os.chdir(sys._MEIPASS)
+
     App()
 
 if __name__ == "__main__":
