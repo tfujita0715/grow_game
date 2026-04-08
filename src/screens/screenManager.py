@@ -4,6 +4,8 @@ import pyxel
 from .DS_01_title import title
 from .DS_11_setting import SettingScreen
 from .DS_02_room import RoomScreen
+from .hospital import HospitalScreen
+
 #ここで画面遷移を行います。
 # インポート例from .settingScreen import SettingScreen 
 
@@ -17,7 +19,8 @@ class ScreenManager:
         self.screen_map = {
             "title": title,
             "setting": SettingScreen,
-            "room": RoomScreen
+            "room": RoomScreen,
+            "hospital": HospitalScreen
         }
     def update(self):
         self.current_screen.update()
