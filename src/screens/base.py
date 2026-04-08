@@ -21,17 +21,15 @@ class Popup(BaseScreen):
         #切り替え用のフラグ
         self.show_popup = False
 
-    def update_common(self):
+    def update(self):
          #SPACEキーで表示/非表示を切り替え
         if pyxel.btnp(pyxel.KEY_SPACE):
             self.show_popup = not self.show_popup
     
 
-    def draw_common(self):
+    def draw(self):
             #背景・メイン画面の描画
-            pyxel.cls(0)
             pyxel.text(10, 10, "Press SPACE to toggle popup", 7)
-            pyxel.circ(80, 60, 20, 11) # メイン画面のキャラ代わり
 
             #ポップアップの描画（フラグがTrueの時だけ実行）
             if self.show_popup:
