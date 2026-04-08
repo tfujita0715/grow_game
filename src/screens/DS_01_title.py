@@ -1,5 +1,5 @@
 import pyxel
-from .DS_11_setting import Popup
+from .base import Popup
 
 class title(Popup):
     def __init__(self, game_data, chara_data):
