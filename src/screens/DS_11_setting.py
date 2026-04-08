@@ -21,6 +21,8 @@ class SettingScreen(BaseScreen):
     def __init__(self,game_data, chara_data):
         super().__init__(game_data, chara_data)
         self.next_screen = None
+        self.game_data = game_data
+
 
     def update(self):
         if pyxel.btnp(pyxel.KEY_LEFT):
