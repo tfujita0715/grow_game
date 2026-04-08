@@ -16,7 +16,6 @@ class ShopScreen(BaseScreen):
         if pyxel.btnp(pyxel.KEY_ESCAPE):
             self.next_screen = "back"
 
-        # モーダル中は優先
         if self.mode:
             self.update_modal()
             return
@@ -24,11 +23,6 @@ class ShopScreen(BaseScreen):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             mx = pyxel.mouse_x
             my = pyxel.mouse_y
-
-            # ✅ もどるボタン
-            if 9 < mx < 41 and 9 < my < 21:
-                self.next_screen = "room"
-                return
 
             items = list(self.game_data.items.items())
 
@@ -81,10 +75,6 @@ class ShopScreen(BaseScreen):
 
     def draw(self):
         pyxel.cls(0)
-
-        # ✅ もどるボタン
-        pyxel.rect(10, 10, 30, 10, 7)
-        pyxel.text(12, 12, "もどる", 6)
 
         pyxel.text(90, 10, "SHOP", 7)
         pyxel.text(10, 20, f"MONEY: {self.game_data.money}", 10)
