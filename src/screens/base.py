@@ -2,8 +2,8 @@ import pyxel
 #画面の基底クラス共通の機能、初期化
 
 class BaseScreen:
-    def __init__(self,game_data):
-        self.game_data = game_data
+    def __init__(self,game_data, chara_data):
+        self.game_data = game_data, chara_data
         self.next_screen = None #Noneの場合は遷移なし
     def update(self):
         pass
@@ -13,44 +13,34 @@ class BaseScreen:
     def get_next_screen(self):
         return self.next_screen
 
-class Setting(BaseScreen):
-    def __init__(self,game_data):
-        super().__init__(game_data)
-        self.number = False
-
-    def update_common(self):
-        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
-           if 0 <= pyxel.mouse_x <= 64 and 0 <= pyxel.mouse_y <= 64:
-              #ボタンが押されたら遷移先を指定する
-            self.next_screen = "setting"
-    def draw_common(self):
-        pyxel.cls(1) 
-        pyxel.rect(0, 0, 64, 64, 8) # x, y, w, h, col
-        pyxel.text(5, 25, "SETTING", 7)
+class Popup(BaseScreen):
     
-class SettingScreen(BaseScreen):
-    def __init__(self,game_data):
-        super().__init__(game_data)
-        self.next_screen = None
+    def __init__(self, game_data, chara_data):
+        super().__init__(game_data, chara_data)
+        self.number = False
+        #切り替え用のフラグ
+        self.show_popup = False
 
     def update(self):
-        if pyxel.btnp(pyxel.KEY_LEFT):
-            self.game_data.volume = max(0, self.game_data.volume - 1)
-        if pyxel.btnp(pyxel.KEY_RIGHT):
-            self.game_data.volume = min(10, self.game_data.volume + 1)
-        if pyxel.btnp(pyxel.KEY_ESCAPE):
-            self.next_screen = "back" #元の画面に戻るときはback
-        
+         #SPACEキーで表示/非表示を切り替え
+        if pyxel.btnp(pyxel.KEY_SPACE):
+            self.show_popup = not self.show_popup
+    
 
     def draw(self):
-        pyxel.text(80, 100, f"SETTING - VOLUME: {self.game_data.volume}", 7)
+            #背景・メイン画面の描画
+            pyxel.text(10, 10, "Press SPACE to toggle popup", 7)
 
-        #音量バーの描画
-        pyxel.text(80, 120, "VOLUME:", 7)
-        #枠を表示
-        pyxel.rectb(115, 119, 52, 7, 7)
-        #現在の音量（volume * 5 ピクセル分）を塗りつぶす
-        pyxel.rect(116, 120, self.game_data.volume * 5, 5, 10)
+            #ポップアップの描画（フラグがTrueの時だけ実行）
+            if self.show_popup:
+                self.draw_popup()
 
-        pyxel.text(80, 140, "←→key voluemu change", 6)
-        pyxel.text(80, 160, "ESC:back", 6)
+    def draw_popup(self):
+        #ポップアップの枠組み（塗りつぶし四角形）
+        pyxel.rect(35, 35, 92, 52, 7)  #外枠（白）
+        pyxel.rect(36, 36, 90, 50, 1)  #中身（紺）
+        
+        # テキストの表示
+        pyxel.text(50, 50, "INFORMATION", 10)
+        pyxel.text(45, 65, "This is a popup!", 7)
+        pyxel.text(45, 75, "[SPACE] to close", 13)
