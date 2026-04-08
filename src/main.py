@@ -24,9 +24,7 @@ class App:
 
     def update(self):
         self.scmanager.update()
-        #sample画面遷移 これはspace
-        #if pyxel.btnp(pyxel.KEY_SPACE):
-            #self.screen = Screen01() 
+
 
     def draw(self):
         pyxel.cls(0)
