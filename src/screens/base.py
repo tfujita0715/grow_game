@@ -2,7 +2,8 @@ import pyxel
 #画面の基底クラス共通の機能、初期化
 
 class BaseScreen:
-    def __init__(self):
+    def __init__(self,game_data, chara_data):
+        self.game_data = game_data, chara_data
         self.next_screen = None #Noneの場合は遷移なし
     def update(self):
         pass
@@ -12,29 +13,19 @@ class BaseScreen:
     def get_next_screen(self):
         return self.next_screen
 
-class Setting(BaseScreen):
-    def __init__(self):
-        super().__init__()
-        self.number = False
-
-    def update_common(self):
-        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
-            if 0 <= pyxel.mouse_x <= 64 and 0 <= pyxel.mouse_y <= 64:
-                # ボタンが押されたら遷移先を指定する
-                self.next_screen = "setting"
-    def draw_common(self):
-        pyxel.cls(1) 
-        pyxel.rect(0, 0, 64, 64, 8) # x, y, w, h, col
-        pyxel.text(5, 25, "SETTING", 7)
+class Popup(BaseScreen):
     
-class SettingScreen(BaseScreen):
-    def __init__(self):
-        super().__init__()
-        self.next_screen = None
+    def __init__(self, game_data, chara_data):
+        super().__init__(game_data, chara_data)
+        self.number = False
+        #切り替え用のフラグ
+        self.show_popup = False
 
     def update(self):
-        if pyxel.btnp(pyxel.KEY_ESCAPE):
-            self.next_screen = "back" #元の画面に戻るときはback
+         #SPACEキーで表示/非表示を切り替え
+        if pyxel.btnp(pyxel.KEY_SPACE):
+            self.show_popup = not self.show_popup
+    
 
         # SHOPボタン
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
@@ -48,3 +39,20 @@ class SettingScreen(BaseScreen):
         # SHOPボタン
         pyxel.rect(80, 80, 100, 40, 8)
         pyxel.text(100, 95, "SHOP", 7)
+        
+        #背景・メイン画面の描画
+        pyxel.text(10, 10, "Press SPACE to toggle popup", 7)
+
+        #ポップアップの描画（フラグがTrueの時だけ実行）
+        if self.show_popup:
+            self.draw_popup()
+
+    def draw_popup(self):
+        #ポップアップの枠組み（塗りつぶし四角形）
+        pyxel.rect(35, 35, 92, 52, 7)  #外枠（白）
+        pyxel.rect(36, 36, 90, 50, 1)  #中身（紺）
+        
+        # テキストの表示
+        pyxel.text(50, 50, "INFORMATION", 10)
+        pyxel.text(45, 65, "This is a popup!", 7)
+        pyxel.text(45, 75, "[SPACE] to close", 13)
