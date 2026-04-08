@@ -11,6 +11,8 @@ class RoomScreen(Popup):
     def update(self):
         if pyxel.btnp(pyxel.KEY_Q):
             self.next_turn()
+        self.popup.update()
+
 
     def nextturn(self):
         #次の日
