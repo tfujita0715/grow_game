@@ -53,6 +53,7 @@ class SettingData:
 
 class CharacterData:
     def __init__(self):
+        self.turn = 3        #残りのターン数
         self.day = 1         #現在の日付
         self.HP = 100        #体力
         self.maxHP = 100     #最大HP

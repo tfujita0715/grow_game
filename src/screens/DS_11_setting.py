@@ -1,21 +1,5 @@
 import pyxel
 from .base import BaseScreen
-
-#popupができ次第削除予定。継承しないでください
-class Setting(BaseScreen):
-    def __init__(self, game_data, chara_data):
-        super().__init__(game_data, chara_data)
-        self.number = False
-
-    def update_common(self):
-        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
-           if 0 <= pyxel.mouse_x <= 64 and 0 <= pyxel.mouse_y <= 64:
-              #ボタンが押されたら遷移先を指定する
-            self.next_screen = "setting"
-    def draw_common(self):
-        pyxel.cls(1) 
-        pyxel.rect(0, 0, 64, 64, 8) # x, y, w, h, col
-        pyxel.text(5, 25, "SETTING", 7)
     
 class SettingScreen(BaseScreen):
     def __init__(self,game_data, chara_data):
