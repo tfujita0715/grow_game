@@ -25,6 +25,10 @@ class Popup(BaseScreen):
          #SPACEキーで表示/非表示を切り替え
         if pyxel.btnp(pyxel.KEY_SPACE):
             self.show_popup = not self.show_popup
+
+        #if pyxel.btnp
+            #if 59 < pyxel.mouse_x 
+            #self.next_screen = "setting"
     
 
     def draw(self):
@@ -43,8 +47,8 @@ class Popup(BaseScreen):
 
     def draw_popup(self):
         #ポップアップの枠組み（塗りつぶし四角形）
-        pyxel.rect(50, 10, 177, 71, 7)  #外枠（白）
-        pyxel.rect(51, 11, 175, 69, 1)  #中身（紺）
+        pyxel.rect(27, 27, 202, 202, 7)  #外枠（白）
+        pyxel.rect(28, 28, 200, 200, 1)  #中身（紺）
         
         # テキストの表示
         pyxel.text(54, 12, "menu", 10)
