@@ -1,6 +1,7 @@
 import pyxel
 from .base import BaseScreen
 
+#popupができ次第削除予定。継承しないでください
 class Setting(BaseScreen):
     def __init__(self, game_data, chara_data):
         super().__init__(game_data, chara_data)
