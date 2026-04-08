@@ -3,7 +3,8 @@ import pyxel
 
 class BaseScreen:
     def __init__(self,game_data, chara_data):
-        self.game_data = game_data, chara_data
+        self.game_data = game_data
+        self.chara_data = chara_data
         self.next_screen = None #Noneの場合は遷移なし
     def update(self):
         pass
