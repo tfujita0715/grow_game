@@ -3,7 +3,8 @@ import pyxel
 
 class BaseScreen:
     def __init__(self,game_data, chara_data):
-        self.game_data = game_data, chara_data
+        self.game_data = game_data
+        self.chara_data = chara_data
         self.next_screen = None #Noneの場合は遷移なし
     def update(self):
         pass
@@ -27,18 +28,19 @@ class Popup(BaseScreen):
             self.show_popup = not self.show_popup
     
 
-        # SHOPボタン
-        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
-            if 80 < pyxel.mouse_x < 180 and 80 < pyxel.mouse_y < 120:
-                self.next_screen = "shop"
+    def draw(self):
+            #背景・メイン画面の描画
+            #pyxel.text(10, 10, "Press SPACE to toggle popup", 7)
+            #左上の四角ボタンの描画
+            pyxel.rect(9, 9, 16, 16, 13)#全体の四角
+            pyxel.rect(12, 12, 10, 2, 7)
+            pyxel.rect(12, 16, 10, 2, 7)
+            pyxel.rect(12, 20, 10, 2, 7)
+
 
     def draw(self):
         pyxel.cls(2)
         pyxel.text(90, 40, "SETTING", 7)
-
-        # SHOPボタン
-        pyxel.rect(80, 80, 100, 40, 8)
-        pyxel.text(100, 95, "SHOP", 7)
         
         #背景・メイン画面の描画
         pyxel.text(10, 10, "Press SPACE to toggle popup", 7)
@@ -49,10 +51,22 @@ class Popup(BaseScreen):
 
     def draw_popup(self):
         #ポップアップの枠組み（塗りつぶし四角形）
-        pyxel.rect(35, 35, 92, 52, 7)  #外枠（白）
-        pyxel.rect(36, 36, 90, 50, 1)  #中身（紺）
+        pyxel.rect(50, 10, 177, 71, 7)  #外枠（白）
+        pyxel.rect(51, 11, 175, 69, 1)  #中身（紺）
         
         # テキストの表示
-        pyxel.text(50, 50, "INFORMATION", 10)
-        pyxel.text(45, 65, "This is a popup!", 7)
-        pyxel.text(45, 75, "[SPACE] to close", 13)
+        pyxel.text(54, 12, "menu", 10)
+        #pyxel.text(45, 65, "This is a popup!", 7)
+        #pyxel.text(45, 75, "[SPACE] to close", 13)
+
+        #各ボタンの配置
+        pyxel.rect(60, 20, 30, 20, 7)
+        pyxel.text(62, 27, "setting" , 0)
+        pyxel.rect(102, 20, 30, 20, 7)
+        pyxel.rect(144, 20, 30, 20, 7)
+        pyxel.rect(186, 20, 30, 20, 7)
+        pyxel.rect(60, 50, 30, 20, 7)
+        pyxel.rect(102, 50, 30, 20, 7)
+        pyxel.rect(144, 50, 30, 20, 7)
+        pyxel.rect(186, 50, 30, 20, 7)
+
