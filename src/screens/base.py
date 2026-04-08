@@ -69,4 +69,5 @@ class Popup(BaseScreen):
         pyxel.rect(102, 50, 30, 20, 7)
         pyxel.rect(144, 50, 30, 20, 7)
         pyxel.rect(186, 50, 30, 20, 7)
+        pyxel.text(146, 27, "shop", 0)
 
