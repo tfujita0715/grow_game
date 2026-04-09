@@ -41,8 +41,8 @@ class ShopScreen(BaseScreen):
         mx = pyxel.mouse_x
         my = pyxel.mouse_y
 
-        if 80 < mx < 140 and 140 < my < 170:
-            if self.mode == "confirm":
+        if self.mode == "confirm":
+            if 80 < mx < 140 and 140 < my < 170:
                 name, item = self.select_item
 
                 if self.game_data.money >= item["price"]:
@@ -51,23 +51,30 @@ class ShopScreen(BaseScreen):
                 else:
                     self.msg = "お金が足りません"
 
-                self.mode = "result"
-
-            elif self.mode == "after":
                 self.mode = None
 
-        elif 160 < mx < 220 and 140 < my < 170:
-            if self.mode == "confirm":
+            elif 160 < mx < 220 and 140 < my < 170:
                 self.mode = None
-            elif self.mode == "after":
+
+        elif self.mode == "after":
+            if 80 < mx < 140 and 140 < my < 170:
+                self.mode = None
+
+            elif 160 < mx < 220 and 140 < my < 170:
                 self.next_screen = "back"
-
-        elif self.mode == "result":
-            self.mode = "after"
-
+                
     def buy(self, item):
         self.game_data.money -= item["price"]
 
+        name, _ = self.select_item
+
+        # 所持数追加
+        if name in self.game_data.inventory:
+            self.game_data.inventory[name] += 1
+        else:
+            self.game_data.inventory[name] = 1
+
+        # ステータス反映
         self.chara_data.tail += item["tail"]
         self.chara_data.size += item["size"]
         self.chara_data.IQ += item["iq"]
@@ -128,7 +135,8 @@ class ShopScreen(BaseScreen):
             pyxel.text(50, 120, "クリックで次へ", 7)
 
         elif self.mode == "after":
-            pyxel.text(50, 80, "続けますか？", 7)
+            pyxel.text(50, 80, self.msg, 7)
+            pyxel.text(50, 100, "続けますか？", 7)
 
             pyxel.rect(80, 140, 60, 30, 8)
             pyxel.rectb(80, 140, 60, 30, 7)

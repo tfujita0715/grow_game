@@ -12,7 +12,7 @@ class GameData:
         self.volume = 5
         self.username = ""
         #setting
-        self.money = 0
+        self.money = 100
         self.hungerLevel = 100   #空腹度
         self.unko   = 0        #キャッシュ（うんち）
         self.lifespan   = 100    #寿命
@@ -25,6 +25,7 @@ class GameData:
                     "Raspberry Pi" : {"price": 90, "tail": 0.1, "size": 0.1, "iq": 1, "hp": 0},
                     "NullNullNatto" : {"price": 40, "tail": 0, "size": 0, "iq": 0, "hp": 10},
         }
+        self.inventory = {}
 
         #起動時にデータを読み込む
         self.load()

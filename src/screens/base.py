@@ -26,6 +26,16 @@ class Popup(BaseScreen):
          #SPACEキーで表示/非表示を切り替え
         if pyxel.btnp(pyxel.KEY_SPACE):
             self.show_popup = not self.show_popup
+
+        # メニュー表示中だけクリック判定
+        if self.show_popup and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
+            mx = pyxel.mouse_x
+            my = pyxel.mouse_y
+
+            # ショップボタン
+            if 144 < mx < 174 and 20 < my < 40:
+                self.next_screen = "shop"
+                self.show_popup = False  # メニュー閉じる
     
 
     def draw(self):
