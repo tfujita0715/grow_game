@@ -2,8 +2,10 @@ import pyxel
 from .base import BaseScreen
 
 class Bath(BaseScreen):
-    def __init__(self):
-        pyxel.load("bath.pyxres")
+    def __init__(self, game_data, chara_data):
+        super().__init__(game_data, chara_data)
+        self.chara_data = chara_data
+        #pyxel.load("bath.pyxres")
     
     def update(self):
         if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
@@ -17,7 +19,7 @@ class Bath(BaseScreen):
                 pass
 
     def draw(self):
-        pyxel.blt(0, 0, 0, 0, 0, 255, 255, 0)
+        #pyxel.blt(0, 0, 0, 0, 0, 255, 255, 0)
         pyxel.text(17, 192, "セキュリティ風呂", 0)
         pyxel.text(140, 193, "色風呂", 0)
 

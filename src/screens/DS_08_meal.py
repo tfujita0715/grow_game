@@ -15,24 +15,23 @@ class meal(Popup):
         #ごはんの入力受け取り
         if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
             if 16 < pyxel.mouse_x < 79 and 24 < pyxel.mouse_y < 55:
-                
-                self.choose(ByteBites, "バイトバイツ")
+                self.choose(self.game_data.items["Byte Bites"], self.game_date.ByteBites)
             
             elif 96 < pyxel.mouse_x < 159 and 24 < pyxel.mouse_y < 55:
-                self.game_data.items["Cookie"]
-                self.choose(items, self.game_data.items["Cookie"])
+                self.choose(self.game_data.items["Cookie"], self.game_date.Cookie)
             
             elif 176 < pyxel.mouse_x < 239 and 24 < pyxel.mouse_y < 55:
-                self.choose(WiFi, "Wi-Fiバームクーヘン")
+                self.choose(self.game_data.items["Wi-Fiバームクーヘン"], self.game_date.Wifi)
 
             elif 16 < pyxel.mouse_x < 79 and 72 < pyxel.mouse_y < 103:
-                self.choose(SSD, "SSDサンド")
+                self.choose(self.game_data.items["SSDサンド"], self.game_date.SSD)
 
             elif 96 < pyxel.mouse_x < 159 and 72 < pyxel.mouse_y < 103:
-                self.choose(Raspberry, "Raspberry Pi")
+                self.choose(self.game_data.items["Raspberry Pi"], self.game_date.Pi)
 
             elif 176 < pyxel.mouse_x < 239 and 72 < pyxel.mouse_y < 103:
-                self.choose(Natto, "NullNullNatto")
+                self.choose(self.game_data.items["NullNullNatto"], self.game_date.Natto)
+
     
     def draw(self):
         #ごはんの選択肢の描画
@@ -49,10 +48,10 @@ class meal(Popup):
 
             
 
-    def choose(self, food, name):
+    def choose(self, food, have):
         while(self.choice == False):
             if food > 0:
-                pyxel.text(100, 110, name, 10)
+                pyxel.text(100, 110, food, 10)
                 pyxel.text(100, 120, "をたべますか？", 10)
                 pyxel.text(110, 130, "Yes / No", 10)
                 if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
