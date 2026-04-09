@@ -27,7 +27,7 @@ class ShopScreen(BaseScreen):
             # BACK TO ROOM
             if 80 < mx < 180 and 232 < my < 244:
                 self.next_screen = "room"
-                return   # ← 超重要
+                return
 
             # アイテム選択
             items = list(self.game_data.items.items())
@@ -39,7 +39,7 @@ class ShopScreen(BaseScreen):
                 if x < mx < x + 200 and y < my < y + 25:
                     self.select_item = (name, item)
                     self.mode = "confirm"
-                    return   # ← これも重要
+                    return
 
     def update_modal(self):
         if not pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
@@ -76,10 +76,18 @@ class ShopScreen(BaseScreen):
         name, _ = self.select_item
 
         # 所持数追加
-        if name in self.game_data.inventory:
-            self.game_data.inventory[name] += 1
-        else:
-            self.game_data.inventory[name] = 1
+        if name == "Byte Bites":
+            self.game_data.ByteBites += 1
+        elif name == "Cookie":
+            self.game_data.Cookie += 1
+        elif name == "Wi-Fiバームクーヘン":
+            self.game_data.Wifi += 1
+        elif name == "SSDサンド":
+            self.game_data.SSD += 1
+        elif name == "Raspberry Pi":
+            self.game_data.Pi += 1
+        elif name == "NullNullNatto":
+            self.game_data.Natto += 1
 
         # ステータス反映
         self.chara_data.tail += item["tail"]
