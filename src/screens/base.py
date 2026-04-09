@@ -85,6 +85,20 @@ class Popup(BaseScreen):
                 self.next_screen = "setting"
 
 
+        #if pyxel.btnp(pyxel.KEY_Q):
+            #self.next_screen = "meal"
+
+        elif pyxel.btnp(pyxel.KEY_W):
+            self.next_screen = "shop"
+
+        elif pyxel.btnp(pyxel.KEY_E):
+            self.next_screen = "toilet"
+
+        elif pyxel.btnp(pyxel.KEY_R):
+            self.next_screen = "bath"
+
+
+
 
 
 

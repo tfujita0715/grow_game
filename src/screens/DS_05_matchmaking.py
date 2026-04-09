@@ -1,6 +1,7 @@
 import pyxel
+from .base import BaseScreen
 
-class MatchMaking:
+class MatchMaking(BaseScreen):
     def __init__(self, item, characters):
         self.item = item
         self.characters = characters
@@ -18,7 +19,7 @@ class MatchMaking:
             #結婚ボタン
             elif 97 < pyxel.mouse_x < 160 and 160 < pyxel.mouse_y < 186:
                 self.partner = self.characters[0]
-                #TODO繁殖にいく
+                self.next_screen = "breed"
                 #TODOdata.pyとやりとりして、結婚相手を登録する
 
     def draw(self):
