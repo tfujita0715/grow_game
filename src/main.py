@@ -15,7 +15,6 @@ class App:
         
         self.game_data = GameData()
         self.chara_data = CharacterData()
-        self.setting_data = SettingData()
         #画面遷移をインスタンス化
         self.scmanager = ScreenManager(self.game_data,self.chara_data)
 
