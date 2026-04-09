@@ -5,6 +5,11 @@ from .DS_01_title import title
 from .DS_11_setting import SettingScreen
 from .DS_02_room import RoomScreen
 from .hospital import HospitalScreen
+#from .DS_08_meal import meal
+from .DS_04_bath import Bath
+from .DS_12_shop import ShopScreen
+from .DS_03_toilet import ToiletScreen
+
 
 #ここで画面遷移を行います。
 # インポート例from .settingScreen import SettingScreen 
@@ -20,7 +25,11 @@ class ScreenManager:
             "title": title,
             "setting": SettingScreen,
             "room": RoomScreen,
-            "hospital": HospitalScreen
+            "hospital": HospitalScreen,
+            #"meal": meal,
+            "bath": Bath,
+            "shop": ShopScreen,
+            "toilet": ToiletScreen
         }
     def update(self):
         self.current_screen.update()
