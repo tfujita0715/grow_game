@@ -58,7 +58,9 @@ class CharacterData:
         self.HP = 100        #体力
         self.maxHP = 100     #最大HP
         self.gene = None     #遺伝子
-        self.RGB = None      
+        self.r = 0
+        self.g = 0
+        self.b = 0    
         self.tail = 0        #尻尾
         self.size = 0        #大きさ
         self.IQ = 0          #賢さ
