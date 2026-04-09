@@ -26,8 +26,6 @@ class GameData:
             "NullNullNatto" : {"price": 40, "tail": 0, "size": 0, "iq": 0, "hp": 10},
         }
 
-        self.inventory = {}
-
         #ご飯の所持数
         self.ByteBites = 0
         self.Cookie = 0
