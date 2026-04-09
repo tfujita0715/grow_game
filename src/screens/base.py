@@ -26,8 +26,9 @@ class Popup(BaseScreen):
 
     def update(self):
          #SPACEキーで表示/非表示を切り替え
-        if pyxel.btnp(pyxel.KEY_SPACE):
-            self.show_popup = not self.show_popup
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
+            if 8 < pyxel.mouse_x < 26 and 8 < pyxel.mouse_y < 26:
+                self.show_popup = not self.show_popup
 
         #if pyxel.btnp
             #if 59 < pyxel.mouse_x 
@@ -83,6 +84,24 @@ class Popup(BaseScreen):
 
             elif 101 < pyxel.mouse_x < 153 and 49 < pyxel.mouse_y < 101:
                 self.next_screen = "setting"
+
+            elif 163 < pyxel.mouse_x < 215 and 49 < pyxel.mouse_y < 101:
+                self.next_screen = "shop"
+
+            elif 39 < pyxel.mouse_x < 91 and 109 < pyxel.mouse_y < 161:
+                self.next_screen = "hospital"
+
+            elif 101 < pyxel.mouse_x < 153 and 109 < pyxel.mouse_y < 161:
+                self.next_screen = "toilet"
+
+            elif 163 < pyxel.mouse_x < 215 and 109 < pyxel.mouse_y < 161:
+                self.next_screen = "bath"
+
+            elif 70 < pyxel.mouse_x < 122 and 169 < pyxel.mouse_y < 221:
+                self.next_screen = "meal"
+
+
+            
 
 
         #if pyxel.btnp(pyxel.KEY_Q):
