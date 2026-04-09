@@ -1,7 +1,7 @@
 import pyxel
-from .base import BaseScreen
+from .base import Popup
 
-class HospitalScreen(BaseScreen):
+class HospitalScreen(Popup):
     def __init__(self, game_data):
         super().__init__(game_data)
         self.menu_index = 0

@@ -1,4 +1,7 @@
+import os
+import sys
 import pyxel
+
 from screens.screenManager import ScreenManager
 from data import GameData
 from data import CharacterData
@@ -21,9 +24,7 @@ class App:
 
     def update(self):
         self.scmanager.update()
-        #sample画面遷移 これはspace
-        #if pyxel.btnp(pyxel.KEY_SPACE):
-            #self.screen = Screen01() 
+
 
     def draw(self):
         pyxel.cls(0)
@@ -32,6 +33,11 @@ class App:
 
 def main():
     print("Game Started!")
+
+    #exeビルド時のおまじないらしい
+    if getattr(sys, 'frozen', False):
+        os.chdir(sys._MEIPASS)
+
     App()
 
 if __name__ == "__main__":

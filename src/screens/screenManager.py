@@ -4,9 +4,7 @@ import pyxel
 from .DS_01_title import title
 from .base import SettingScreen
 from .DS_02_room import RoomScreen
-from .DS_04_bath import Bath
-from .DS_05_matchmaking import MatchMaking
-from .DS_07_breed import Breed
+from .hospital import HospitalScreen
 
 #ここで画面遷移を行います。
 # インポート例from .settingScreen import SettingScreen 
@@ -22,9 +20,7 @@ class ScreenManager:
             "title": title,
             "setting": SettingScreen,
             "room": RoomScreen,
-            "bath": Bath,
-            "matchmaking": MatchMaking,
-            "breed": Breed,
+            "hospital": HospitalScreen
         }
     def update(self):
         self.current_screen.update()
