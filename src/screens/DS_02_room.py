@@ -8,11 +8,10 @@ class RoomScreen(Popup):
         self.chara_data = chara_data
 
         # プログラムの場所を基準に assets フォルダ内のファイルを指定
-        #path = os.path.join(os.path.dirname(__file__),"..", "assets", "room.pyxres")
+        #path = os.path.join(os.path.dirname(__file__),"..", "..", "assets", "room.pyxres")
         #pyxel.load(path)
         #print(path)
-        #pyxel.load(r"assets\room.pyxres")
-        #pyxel.load("C:/pyxel/grow2/grow_game/assets/room.pyxres")
+        pyxel.load("assets/room.pyxres")
         
 
 
@@ -27,7 +26,7 @@ class RoomScreen(Popup):
         self.game_data.day += 1
 
     def draw(self):
-        
+
         pyxel.bltm(0, 0, 0, 0, 0, 256, 256)
 
 
