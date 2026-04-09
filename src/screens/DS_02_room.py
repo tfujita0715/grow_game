@@ -12,7 +12,7 @@ class RoomScreen(Popup):
         #pyxel.load(path)
         #print(path)
         #pyxel.load(r"assets\room.pyxres")
-        pyxel.load("C:/pyxel/grow2/grow_game/assets/room.pyxres")
+        #pyxel.load("C:/pyxel/grow2/grow_game/assets/room.pyxres")
         
 
 
