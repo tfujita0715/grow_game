@@ -25,7 +25,6 @@ class GameData:
             "Raspberry Pi" : {"price": 90, "tail": 0.1, "size": 0.1, "iq": 1, "hp": 0},
             "NullNullNatto" : {"price": 40, "tail": 0, "size": 0, "iq": 0, "hp": 10},
         }
-        self.inventory = {}
 
         #ご飯の所持数
         self.ByteBites = 0

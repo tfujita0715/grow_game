@@ -24,6 +24,12 @@ class ShopScreen(BaseScreen):
             mx = pyxel.mouse_x
             my = pyxel.mouse_y
 
+            # BACK TO ROOM
+            if 80 < mx < 180 and 232 < my < 244:
+                self.next_screen = "room"
+                return   # ← 超重要
+
+            # アイテム選択
             items = list(self.game_data.items.items())
 
             for i, (name, item) in enumerate(items):
@@ -33,6 +39,7 @@ class ShopScreen(BaseScreen):
                 if x < mx < x + 200 and y < my < y + 25:
                     self.select_item = (name, item)
                     self.mode = "confirm"
+                    return   # ← これも重要
 
     def update_modal(self):
         if not pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
@@ -105,6 +112,9 @@ class ShopScreen(BaseScreen):
             self.draw_modal()
         else:
             pyxel.text(40, 190, self.msg, 7)
+
+        pyxel.rect(80, 232, 100, 12, 5)
+        pyxel.text(90, 235, "BACK TO ROOM", 7)
 
     def draw_modal(self):
         pyxel.rect(30, 30, 200, 140, 1)
