@@ -18,14 +18,22 @@ class GameData:
         self.lifespan   = 100    #寿命
 
         self.items = {
-                    "Byte Bites" : {"price": 50, "tail": 0.5, "size": 0.5, "iq": 0.5, "hp": 0},
-                    "Cookie" : {"price": 80, "tail": 0.75, "size": 0.75, "iq": 0.75, "hp": 0},
-                    "Wi-Fiバームクーヘン" : {"price": 70, "tail": 1, "size": 0.1, "iq": 0.1, "hp": 0},
-                    "SSDサンド" : {"price": 70, "tail": 0.1, "size": 1, "iq": 0.1, "hp": 0},
-                    "Raspberry Pi" : {"price": 90, "tail": 0.1, "size": 0.1, "iq": 1, "hp": 0},
-                    "NullNullNatto" : {"price": 40, "tail": 0, "size": 0, "iq": 0, "hp": 10},
+            "Byte Bites" : {"price": 50, "tail": 0.5, "size": 0.5, "iq": 0.5, "hp": 0},
+            "Cookie" : {"price": 80, "tail": 0.75, "size": 0.75, "iq": 0.75, "hp": 0},
+            "Wi-Fiバームクーヘン" : {"price": 70, "tail": 1, "size": 0.1, "iq": 0.1, "hp": 0},
+            "SSDサンド" : {"price": 70, "tail": 0.1, "size": 1, "iq": 0.1, "hp": 0},
+            "Raspberry Pi" : {"price": 90, "tail": 0.1, "size": 0.1, "iq": 1, "hp": 0},
+            "NullNullNatto" : {"price": 40, "tail": 0, "size": 0, "iq": 0, "hp": 10},
         }
         self.inventory = {}
+
+        #ご飯の所持数
+        self.ByteBites = 0
+        self.Cookie = 0
+        self.Wifi = 0
+        self.SSD = 0
+        self.Pi = 0
+        self.Natto = 0
 
         #起動時にデータを読み込む
         self.load()
@@ -54,6 +62,7 @@ class SettingData:
 
 class CharacterData:
     def __init__(self):
+        self.turn = 3        #残りのターン数
         self.day = 1         #現在の日付
         self.HP = 100        #体力
         self.maxHP = 100     #最大HP

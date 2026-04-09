@@ -15,7 +15,6 @@ class App:
         
         self.game_data = GameData()
         self.chara_data = CharacterData()
-        self.setting_data = SettingData()
         #画面遷移をインスタンス化
         self.scmanager = ScreenManager(self.game_data,self.chara_data)
 
@@ -24,9 +23,7 @@ class App:
 
     def update(self):
         self.scmanager.update()
-        #sample画面遷移 これはspace
-        #if pyxel.btnp(pyxel.KEY_SPACE):
-            #self.screen = Screen01() 
+
 
     def draw(self):
         pyxel.cls(0)
