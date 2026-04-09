@@ -2,7 +2,7 @@ import pyxel
 
 #画面インポート
 from .DS_01_title import title
-from .base import SettingScreen
+from .DS_11_setting import SettingScreen
 from .DS_02_room import RoomScreen
 from .hospital import HospitalScreen
 
