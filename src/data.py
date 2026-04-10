@@ -14,7 +14,7 @@ class GameData:
         #setting
         self.money = 100
         self.hungerLevel = 100   #空腹度
-        self.unko   = 0        #キャッシュ（うんち）
+        self.unko   = 100        #キャッシュ（うんち）
         self.lifespan   = 100    #寿命
 
         self.items = {

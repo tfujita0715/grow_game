@@ -25,6 +25,8 @@ class RoomScreen(Popup):
     def nextturn(self):
         self.chara_data.day += 1
 
+        self.game_data.unko += 3
+
     def draw(self):
         
         pyxel.bltm(0, 0, 0, 0, 0, 256, 256)
