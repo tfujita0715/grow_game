@@ -86,6 +86,8 @@ class RoomScreen(Popup):
         self.chara_data.turn = 3
 
     def draw(self):
+        pyxel.bltm(0, 0, 0, 0, 0, 256, 256) 
+
         #アニメーション専用画面
         if self.is_animating:
             pyxel.cls(0)
@@ -104,7 +106,6 @@ class RoomScreen(Popup):
                 color = 8 if "DMG" in log or "WARNING" in log else 7
                 pyxel.text(60, 130 + (i * 15), log, color)
             return
-        pyxel.cls(0)
 
         pyxel.rect(180, 230, 65, 15, 5) #色は5（濃い青）
         pyxel.text(194, 235, "END DAY", 7) #テキストは白
