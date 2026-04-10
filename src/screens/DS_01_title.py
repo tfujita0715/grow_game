@@ -8,7 +8,7 @@ class title(Popup):
         self.is_started = False
         self.chara_data = chara_data
 
-        #pyxel.load("c:/pyxel/grow2/grow_game/src/screens/../../assets/room.pyxres")
+
 
     def update(self):
         if pyxel.btnp(pyxel.KEY_SPACE):
@@ -17,5 +17,5 @@ class title(Popup):
     def draw(self):
 
         #pyxel.bltm(0, 0, 0, 0, 0, 256, 256)
-        pyxel.text(80, 120, "title", 20)
-        pyxel.text(190, 120, "plz push space",5)
+        pyxel.text(80, 120, "Turing Pet", 20)
+        pyxel.text(80, 140, "plz push space start",5)

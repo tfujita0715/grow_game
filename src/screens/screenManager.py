@@ -4,7 +4,7 @@ import pyxel
 from .DS_01_title import title
 from .DS_11_setting import SettingScreen
 from .DS_02_room import RoomScreen
-from .hospital import HospitalScreen
+from .DS_16_hospital import HospitalScreen
 #from .DS_08_meal import meal
 from .DS_04_bath import Bath
 from .DS_12_shop import ShopScreen

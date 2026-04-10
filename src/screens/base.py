@@ -26,8 +26,9 @@ class Popup(BaseScreen):
 
     def update(self):
          #SPACEキーで表示/非表示を切り替え
-        if pyxel.btnp(pyxel.KEY_SPACE):
-            self.show_popup = not self.show_popup
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
+            if 8 < pyxel.mouse_x < 26 and 8 < pyxel.mouse_y < 26:
+                self.show_popup = not self.show_popup
 
         #if pyxel.btnp
             #if 59 < pyxel.mouse_x 
@@ -54,19 +55,27 @@ class Popup(BaseScreen):
         pyxel.rect(28, 28, 200, 200, 1)  #中身（紺）
         
         # テキストの表示
-        pyxel.text(35, 35, "メニュー", 10, self.font)
+        pyxel.text(35, 35, "メニュー", 7, self.font)
         #pyxel.text(45, 65, "This is a popup!", 7)
         #pyxel.text(45, 75, "[SPACE] to close", 13)
 
         #各ボタンの配置
-        pyxel.rect(40, 50, 50, 50, 7)
-        pyxel.rect(102, 50, 50, 50, 7)
-        pyxel.rect(164, 50, 50, 50, 7)
-        pyxel.rect(40, 110, 50, 50, 7)
-        pyxel.rect(102, 110, 50, 50, 7)
-        pyxel.rect(164, 110, 50, 50, 7)
-        pyxel.rect(71, 170, 50, 50, 7)
-        pyxel.rect(133, 170, 50, 50, 7)
+        pyxel.rect(40, 50, 50, 50, 6)
+        pyxel.text(53, 65, "へやに\n\nもどる", 7, self.font)
+        pyxel.rect(102, 50, 50, 50, 13)
+        pyxel.text(112, 72, "せってい", 7, self.font)
+        pyxel.rect(164, 50, 50, 50, 10)
+        pyxel.text(174, 72, "ショップ", 7, self.font)
+        pyxel.rect(40, 110, 50, 50, 8)
+        pyxel.text(45, 132, "びょういん", 7, self.font)
+        pyxel.rect(102, 110, 50, 50, 3)
+        pyxel.text(115, 132, "トイレ", 7, self.font)
+        pyxel.rect(164, 110, 50, 50, 12)
+        pyxel.text(177, 132, "おふろ", 7, self.font)
+        pyxel.rect(71, 170, 50, 50, 9)
+        pyxel.text(84, 192, "ごはん", 7, self.font)
+        pyxel.rect(133, 170, 50, 50, 0)
+        pyxel.text(140, 185, "じゅんび\n\nちゅう…", 7, self.font)
 
 
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
@@ -75,6 +84,24 @@ class Popup(BaseScreen):
 
             elif 101 < pyxel.mouse_x < 153 and 49 < pyxel.mouse_y < 101:
                 self.next_screen = "setting"
+
+            elif 163 < pyxel.mouse_x < 215 and 49 < pyxel.mouse_y < 101:
+                self.next_screen = "shop"
+
+            elif 39 < pyxel.mouse_x < 91 and 109 < pyxel.mouse_y < 161:
+                self.next_screen = "hospital"
+
+            elif 101 < pyxel.mouse_x < 153 and 109 < pyxel.mouse_y < 161:
+                self.next_screen = "toilet"
+
+            elif 163 < pyxel.mouse_x < 215 and 109 < pyxel.mouse_y < 161:
+                self.next_screen = "bath"
+
+            elif 70 < pyxel.mouse_x < 122 and 169 < pyxel.mouse_y < 221:
+                self.next_screen = "meal"
+
+
+            
 
 
         #if pyxel.btnp(pyxel.KEY_Q):
@@ -88,6 +115,8 @@ class Popup(BaseScreen):
 
         elif pyxel.btnp(pyxel.KEY_R):
             self.next_screen = "bath"
+
+
 
 
 
