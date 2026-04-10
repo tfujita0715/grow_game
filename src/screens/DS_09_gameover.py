@@ -1,10 +1,13 @@
 import pyxel
 from .base import BaseScreen
-pyxel.load("gameover.pyxres")
+#pyxel.load("assets/gameover.pyxres")
 
-class Gameover:
-    def __init__(self):
-        pass
+class Gameover(BaseScreen):
+    def __init__(self, game_data, chara_data):
+        super().__init__(game_data, chara_data)
+        self.chara_data = chara_data
+        self.font = pyxel.Font("misaki_gothic.bdf")
+
         
     def update(self):
         #タイトル画面に戻る処理
@@ -13,6 +16,7 @@ class Gameover:
 
 
     def draw(self):
-        pyxel.bltm(0, 0, 0, 0, 0, 255, 255)
-        pyxel.text(70, 30, "GAME OVER" ,7)
-        pyxel.text(40, 220, "タイトルに戻る", 7)
+        #pyxel.bltm(0, 0, 0, 0, 0, 255, 255)
+        pyxel.cls(0)
+        pyxel.text(110, 120, "GAME OVER" ,7)
+        pyxel.text(100, 220, "タイトルに戻る", 7, self.font)
