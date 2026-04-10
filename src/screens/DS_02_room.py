@@ -89,7 +89,11 @@ class RoomScreen(Popup):
         self.chara_data.turn = 3
 
     def draw(self):
+        pyxel.load("assets/room.pyxres")
         pyxel.bltm(0, 0, 0, 0, 0, 256, 256) 
+
+        pyxel.load("assets/character.pyxres")
+        pyxel.blt(100, 100, 0, 0, 0, 48, 48, 1)
 
         #アニメーション専用画面
         if self.is_animating:
@@ -114,7 +118,7 @@ class RoomScreen(Popup):
         pyxel.text(194, 235, "END DAY", 7) #テキストは白
         #pyxel.bltm(0, 0, 0, 0, 0, 256, 256)
 
-        pyxel.text(80, 120, "room", 7) 
+        #pyxel.text(80, 120, "room", 7) 
         
         pyxel.text(10, 30, f"DAY: {self.chara_data.day}", 7)
         pyxel.text(10, 40, f"HP: {self.chara_data.HP}", 8)
