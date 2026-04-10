@@ -9,7 +9,7 @@ class Breed(BaseScreen):#[ ]繁殖にするか結婚にするか
         
     
     def update(self):
-        if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             #繁殖ボタン
             if 95 < pyxel.mouse_x < 167 and 123 < pyxel.mouse_y < 150:
                 self.get_married = True
