@@ -11,6 +11,7 @@ class ToiletScreen(BaseScreen):
 
         self.used_today = False
         self.result = ""
+        self.chara_data.size = self.chara_data.size + 3.2
 
     def update(self):
         if pyxel.btnp(pyxel.KEY_ESCAPE):

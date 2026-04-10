@@ -11,6 +11,7 @@ class ShopScreen(BaseScreen):
         self.msg = ""
         self.select_item = None
         self.mode = None
+        self.chara_data.size = self.chara_data.size + 3.2
 
     def update(self):
         if pyxel.btnp(pyxel.KEY_ESCAPE):
