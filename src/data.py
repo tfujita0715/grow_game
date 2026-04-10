@@ -19,6 +19,11 @@ class GameData:
         self.unko   = 0        #キャッシュ（うんち）
         self.lifespan   = 100    #寿命
 
+        #一日一回のみ
+        self.isEating = False
+        self.isTakingBath = False
+        self.isUsingToilet = False
+
         self.items = {
             "Byte Bites" : {"price": 50, "tail": 0.5, "size": 0.5, "iq": 0.5, "hp": 0},
             "Cookie" : {"price": 80, "tail": 0.75, "size": 0.75, "iq": 0.75, "hp": 0},
@@ -26,6 +31,12 @@ class GameData:
             "SSDサンド" : {"price": 70, "tail": 0.1, "size": 1, "iq": 0.1, "hp": 0},
             "Raspberry Pi" : {"price": 90, "tail": 0.1, "size": 0.1, "iq": 1, "hp": 0},
             "NullNullNatto" : {"price": 40, "tail": 0, "size": 0, "iq": 0, "hp": 10},
+            "入浴剤R+" : {"price": 70, "R": 20}, 
+            "入浴剤R-" : {"price": 70, "R": -20}, 
+            "入浴剤G+" : {"price": 70, "G": 20}, 
+            "入浴剤G-" : {"price": 70, "G": -20}, 
+            "入浴剤B+" : {"price": 70, "B": 20}, 
+            "入浴剤B-" : {"price": 70, "B": -20}, 
         }
 
         #ご飯の所持数
@@ -35,6 +46,12 @@ class GameData:
         self.SSD = 0
         self.Pi = 0
         self.Natto = 0
+        self.BathBombRp = 0
+        self.BathBombRm = 0
+        self.BathBombGp = 0
+        self.BathBombGm = 0
+        self.BathBombBp = 0
+        self.BathBombBm = 0
 
         #起動時にデータを読み込む
         self.load()
