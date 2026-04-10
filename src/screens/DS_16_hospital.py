@@ -8,6 +8,7 @@ class HospitalScreen(BaseScreen):
         self.medicine_cost = 100
         self.font = pyxel.Font("misaki_gothic.bdf")
         self.page = "top"
+        pyxel.load("assets/hospital.pyxres")
 
     def update(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
@@ -48,6 +49,8 @@ class HospitalScreen(BaseScreen):
                             break 
 
     def draw(self):
+
+        pyxel.bltm(0, 0, 0, 0, 0, 256, 256)
 
         pyxel.text(10, 10, "病院", 7, self.font) 
         pyxel.text(10, 25, f"MONEY: {self.game_data.money} G", 10)
