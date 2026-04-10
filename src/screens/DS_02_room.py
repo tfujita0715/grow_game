@@ -1,10 +1,5 @@
 import pyxel
-<<<<<<< HEAD
 from .base import Popup
-=======
-import os
-from .base import BaseScreen, Popup
->>>>>>> main
 
 class RoomScreen(Popup):
     def __init__(self, game_data, chara_data):
