@@ -4,7 +4,7 @@ import pyxel
 #pyxel既存の16色以外を使える
 # ImageObjectのインスタンスを作成(コンストラクタ引数あり)
 # Parameters:
-# path (str): 画像ファイルのパス
+# path (str): 画像ファイル名
 # x (float): オブジェクトの初期X座標
 # y (float): オブジェクトの初期Y座標
 # colkey (int): 透過色のパレット番号（デフォルトは-1)(指定しなくても大丈夫)
