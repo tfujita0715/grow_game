@@ -108,7 +108,7 @@ class RoomScreen(Popup):
 
         pyxel.rect(180, 230, 65, 15, 5) #色は5（濃い青）
         pyxel.text(194, 235, "END DAY", 7) #テキストは白
-        pyxel.bltm(0, 0, 0, 0, 0, 256, 256)
+        #pyxel.bltm(0, 0, 0, 0, 0, 256, 256)
 
         pyxel.text(80, 120, "room", 7) 
         
@@ -116,7 +116,6 @@ class RoomScreen(Popup):
         pyxel.text(10, 40, f"HP: {self.chara_data.HP}", 8)
 
         pyxel.text(10, 50, f"MONEY: {self.game_data.money}", 10)
-        # sizeがdouble型（Pythonではfloat）と仮定
 
         index = int(self.chara_data.size)
         pyxel.text(10, 60, f"TAIL:{self.chara_data.tail:.1f}", 7)
@@ -126,7 +125,7 @@ class RoomScreen(Popup):
 
         #病気中なら警告を出す
         if self.chara_data.diseases:
-            pyxel.text(10, 45, "STATUS: SICK!", 8,self.font)
+            pyxel.text(10, 100, "STATUS: SICK!", 8,self.font)
                 
         #親クラスのdrawを呼び出して、メニューボタンやポップアップ
         super().draw()
