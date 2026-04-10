@@ -10,11 +10,10 @@ class RoomScreen(Popup):
         self.chara_data.size = self.chara_data.size + 3.2
 
         # プログラムの場所を基準に assets フォルダ内のファイルを指定
-        #path = os.path.join(os.path.dirname(__file__),"..", "assets", "room.pyxres")
+        #path = os.path.join(os.path.dirname(__file__),"..", "..", "assets", "room.pyxres")
         #pyxel.load(path)
         #print(path)
-        #pyxel.load(r"assets\room.pyxres")
-        #pyxel.load("C:/pyxel/grow2/grow_game/assets/room.pyxres")
+        pyxel.load("assets/room.pyxres")
         
         if self.game_data.is_first_play:
             self.game_data.money += 10000
@@ -78,6 +77,7 @@ class RoomScreen(Popup):
 
         pyxel.rect(180, 230, 65, 15, 5) #色は5（濃い青）
         pyxel.text(194, 235, "END DAY", 7) #テキストは白
+        pyxel.bltm(0, 0, 0, 0, 0, 256, 256)
 
         pyxel.text(80, 120, "room", 7) 
         

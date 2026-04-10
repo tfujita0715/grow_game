@@ -8,7 +8,7 @@ class title(Popup):
         self.is_started = False
         self.chara_data = chara_data
 
-        #pyxel.load("c:/pyxel/grow2/grow_game/src/screens/../../assets/room.pyxres")
+
 
     def update(self):
         if pyxel.btnp(pyxel.KEY_SPACE):
