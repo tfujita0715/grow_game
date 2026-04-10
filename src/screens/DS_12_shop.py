@@ -34,10 +34,13 @@ class ShopScreen(BaseScreen):
             items = list(self.game_data.items.items())
 
             for i, (name, item) in enumerate(items):
-                x = 40
-                y = 50 + i * 30
+                col = i % 2
+                row = i // 2
 
-                if x < mx < x + 200 and y < my < y + 25:
+                x = 10 + col * 120
+                y = 70 + row * 28
+
+                if x < mx < x + 80 and y < my < y + 18:
                     self.select_item = (name, item)
                     self.mode = "confirm"
                     return
@@ -89,12 +92,18 @@ class ShopScreen(BaseScreen):
             self.game_data.Pi += 1
         elif name == "NullNullNatto":
             self.game_data.Natto += 1
-
-        # ステータス反映
-        self.chara_data.tail += item["tail"]
-        self.chara_data.size += item["size"]
-        self.chara_data.IQ += item["iq"]
-        self.chara_data.HP += item["hp"]
+        elif name == "入浴剤R+":
+            self.game_data.BathBombRp += 1
+        elif name == "入浴剤R-":
+            self.game_data.BathBombRm += 1
+        elif name == "入浴剤G+":
+            self.game_data.BathBombGp += 1
+        elif name == "入浴剤G-":
+            self.game_data.BathBombGm += 1
+        elif name == "入浴剤B+":
+            self.game_data.BathBombBp += 1
+        elif name == "入浴剤B-":
+            self.game_data.BathBombBm += 1
 
     def draw(self):
         pyxel.cls(0)
@@ -110,11 +119,14 @@ class ShopScreen(BaseScreen):
         items = list(self.game_data.items.items())
 
         for i, (name, item) in enumerate(items):
-            x = 40
-            y = 50 + i * 30
+            col = i % 2
+            row = i // 2
 
-            pyxel.rect(x, y, 200, 25, 8)
-            pyxel.rectb(x, y, 200, 25, 7)
+            x = 10 + col * 120
+            y = 70 + row * 28
+
+            pyxel.rect(x, y, 80, 18, 8)
+            pyxel.rectb(x, y, 80, 18, 7)
             pyxel.text(x + 5, y + 5, f"{name} {item['price']}G", 7)
 
         if self.mode:
