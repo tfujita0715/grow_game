@@ -1,11 +1,24 @@
 import pyxel
+<<<<<<< HEAD
 from .base import Popup
+=======
+import os
+from .base import BaseScreen, Popup
+>>>>>>> main
 
 class RoomScreen(Popup):
     def __init__(self, game_data, chara_data):
         super().__init__(game_data, chara_data)
         self.chara_data = chara_data
         self.game_data = game_data
+
+        # プログラムの場所を基準に assets フォルダ内のファイルを指定
+        #path = os.path.join(os.path.dirname(__file__),"..", "assets", "room.pyxres")
+        #pyxel.load(path)
+        #print(path)
+        #pyxel.load(r"assets\room.pyxres")
+        #pyxel.load("C:/pyxel/grow2/grow_game/assets/room.pyxres")
+        
 
 
         #アニメーション用の変数

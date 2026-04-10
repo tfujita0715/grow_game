@@ -26,6 +26,14 @@ class GameData:
             "NullNullNatto" : {"price": 40, "tail": 0, "size": 0, "iq": 0, "hp": 10},
         }
 
+        #ご飯の所持数
+        self.ByteBites = 0
+        self.Cookie = 0
+        self.Wifi = 0
+        self.SSD = 0
+        self.Pi = 0
+        self.Natto = 0
+
         #起動時にデータを読み込む
         self.load()
     
