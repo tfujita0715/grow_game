@@ -14,9 +14,9 @@ class GameData:
         #setting
         self.is_first_play = True   #初回起動フラグ
 
-        self.money = 0
+        self.money = 100
         self.hungerLevel = 100   #空腹度
-        self.unko   = 0        #キャッシュ（うんち）
+        self.unko   = 100        #キャッシュ（うんち）
         self.lifespan   = 100    #寿命
 
         #一日一回のみ

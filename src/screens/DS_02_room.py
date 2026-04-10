@@ -53,6 +53,9 @@ class RoomScreen(Popup):
 
 
     def nextturn(self):
+        self.chara_data.day += 1
+
+        self.game_data.unko += 3
         self.is_animating = True
         self.anim_timer = 0
         self.old_day = self.chara_data.day

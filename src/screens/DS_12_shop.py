@@ -11,6 +11,7 @@ class ShopScreen(BaseScreen):
         self.msg = ""
         self.select_item = None
         self.mode = None
+        self.chara_data.size = self.chara_data.size + 3.2
 
     def update(self):
         if pyxel.btnp(pyxel.KEY_ESCAPE):
@@ -24,15 +25,25 @@ class ShopScreen(BaseScreen):
             mx = pyxel.mouse_x
             my = pyxel.mouse_y
 
+            # BACK TO ROOM
+            if 80 < mx < 180 and 232 < my < 244:
+                self.next_screen = "room"
+                return
+
+            # アイテム選択
             items = list(self.game_data.items.items())
 
             for i, (name, item) in enumerate(items):
-                x = 40
-                y = 50 + i * 30
+                col = i % 2
+                row = i // 2
 
-                if x < mx < x + 200 and y < my < y + 25:
+                x = 10 + col * 120
+                y = 70 + row * 28
+
+                if x < mx < x + 80 and y < my < y + 18:
                     self.select_item = (name, item)
                     self.mode = "confirm"
+                    return
 
     def update_modal(self):
         if not pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
@@ -41,8 +52,8 @@ class ShopScreen(BaseScreen):
         mx = pyxel.mouse_x
         my = pyxel.mouse_y
 
-        if 80 < mx < 140 and 140 < my < 170:
-            if self.mode == "confirm":
+        if self.mode == "confirm":
+            if 80 < mx < 140 and 140 < my < 170:
                 name, item = self.select_item
 
                 if self.game_data.money >= item["price"]:
@@ -51,27 +62,48 @@ class ShopScreen(BaseScreen):
                 else:
                     self.msg = "お金が足りません"
 
-                self.mode = "result"
-
-            elif self.mode == "after":
                 self.mode = None
 
-        elif 160 < mx < 220 and 140 < my < 170:
-            if self.mode == "confirm":
+            elif 160 < mx < 220 and 140 < my < 170:
                 self.mode = None
-            elif self.mode == "after":
+
+        elif self.mode == "after":
+            if 80 < mx < 140 and 140 < my < 170:
+                self.mode = None
+
+            elif 160 < mx < 220 and 140 < my < 170:
                 self.next_screen = "back"
-
-        elif self.mode == "result":
-            self.mode = "after"
-
+                
     def buy(self, item):
         self.game_data.money -= item["price"]
 
-        self.chara_data.tail += item["tail"]
-        self.chara_data.size += item["size"]
-        self.chara_data.IQ += item["iq"]
-        self.chara_data.HP += item["hp"]
+        name, _ = self.select_item
+
+        # 所持数追加
+        if name == "Byte Bites":
+            self.game_data.ByteBites += 1
+        elif name == "Cookie":
+            self.game_data.Cookie += 1
+        elif name == "Wi-Fiバームクーヘン":
+            self.game_data.Wifi += 1
+        elif name == "SSDサンド":
+            self.game_data.SSD += 1
+        elif name == "Raspberry Pi":
+            self.game_data.Pi += 1
+        elif name == "NullNullNatto":
+            self.game_data.Natto += 1
+        elif name == "入浴剤R+":
+            self.game_data.BathBombRp += 1
+        elif name == "入浴剤R-":
+            self.game_data.BathBombRm += 1
+        elif name == "入浴剤G+":
+            self.game_data.BathBombGp += 1
+        elif name == "入浴剤G-":
+            self.game_data.BathBombGm += 1
+        elif name == "入浴剤B+":
+            self.game_data.BathBombBp += 1
+        elif name == "入浴剤B-":
+            self.game_data.BathBombBm += 1
 
     def draw(self):
         pyxel.cls(0)
@@ -87,17 +119,23 @@ class ShopScreen(BaseScreen):
         items = list(self.game_data.items.items())
 
         for i, (name, item) in enumerate(items):
-            x = 40
-            y = 50 + i * 30
+            col = i % 2
+            row = i // 2
 
-            pyxel.rect(x, y, 200, 25, 8)
-            pyxel.rectb(x, y, 200, 25, 7)
+            x = 10 + col * 120
+            y = 70 + row * 28
+
+            pyxel.rect(x, y, 80, 18, 8)
+            pyxel.rectb(x, y, 80, 18, 7)
             pyxel.text(x + 5, y + 5, f"{name} {item['price']}G", 7)
 
         if self.mode:
             self.draw_modal()
         else:
             pyxel.text(40, 190, self.msg, 7)
+
+        pyxel.rect(80, 232, 100, 12, 5)
+        pyxel.text(90, 235, "BACK TO ROOM", 7)
 
     def draw_modal(self):
         pyxel.rect(30, 30, 200, 140, 1)
@@ -128,7 +166,8 @@ class ShopScreen(BaseScreen):
             pyxel.text(50, 120, "クリックで次へ", 7)
 
         elif self.mode == "after":
-            pyxel.text(50, 80, "続けますか？", 7)
+            pyxel.text(50, 80, self.msg, 7)
+            pyxel.text(50, 100, "続けますか？", 7)
 
             pyxel.rect(80, 140, 60, 30, 8)
             pyxel.rectb(80, 140, 60, 30, 7)
