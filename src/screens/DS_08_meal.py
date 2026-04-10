@@ -66,6 +66,11 @@ class meal(Popup):
         pyxel.text(184, 76, "NullNull",0,self.font)
         pyxel.text(190, 86, "Natto",0,self.font)
 
+        byte_price = self.game_data.items["Byte Bites"]["price"]
+        pyxel.text(10, 10, f"PRICE: {byte_price}G", 7)
+        heal_amount = self.game_data.items["Cookie"]["hp"]
+        self.chara_data.HP += heal_amount
+
             
     def choose(self, food, have):
         if have > 0:
@@ -82,5 +87,7 @@ class meal(Popup):
         elif have <= 0:
             have == 0
             pyxel.text(120, 120, "ショップでごはんをかってね", 10)
+
+
 
 

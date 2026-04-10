@@ -27,13 +27,18 @@ class RoomScreen(Popup):
         self.old_day = 0           #変わる前の日数
     def update(self):
         #アニメーション中の処理（操作ロック）
+        if not self.is_animating:
+            #HPが0以下、または20日が経過
+            if self.chara_data.HP <= 0 or self.chara_data.day > 20:
+                self.next_screen = "gameover" 
+                return 
+
+        #アニメーション中の処理（操作ロック）
         if self.is_animating:
             self.anim_timer += 1
             #60フレーム（約2秒）経ったらアニメーション終了
             if self.anim_timer >= 60:
                 self.is_animating = False
-            
-            #（操作不可）
             return
         
         #親クラスupdateを呼び出し、SPACEキーやクリック有効、必ず最後じゃないと一番上に表示されない
@@ -59,25 +64,23 @@ class RoomScreen(Popup):
 
         self.daily_report = []
 
-        # 1. 既に罹患している病気からのダメージ処理
+        #既に罹患している病気からのダメージ処理
         for disease in self.chara_data.diseases:
             atk = self.chara_data.DISEASE_MASTER[disease]["atk"]
             self.chara_data.HP -= atk
             self.daily_report.append(f"VIRUS DMG: -{atk} ({disease})")
 
-        # 2. 新しい病気にかかる判定（例: 20%の確率で罹患）
+        #新しい病気にかかる判定
         infection_rate = 0.20
         if random.random() < infection_rate:
-            # まだかかっていない病気をリストアップ
+            #まだかかっていない病気をリストアップ
             possible_diseases = [d for d in self.chara_data.DISEASE_MASTER.keys() if d not in self.chara_data.diseases]
             
             if possible_diseases:
-                # ランダムで1つ選んでリストに追加
+                #ランダムで1つ選んでリストに追加
                 new_disease = random.choice(possible_diseases)
                 self.chara_data.diseases.append(new_disease)
                 self.daily_report.append(f"WARNING: Infected with [{new_disease}]")
-
-        # HPが0以下にならないようにする（将来的にここでゲームオーバー判定も可能）
         if self.chara_data.HP < 0:
             self.chara_data.HP = 0
 
@@ -109,9 +112,6 @@ class RoomScreen(Popup):
 
         pyxel.rect(180, 230, 65, 15, 5) #色は5（濃い青）
         pyxel.text(194, 235, "END DAY", 7) #テキストは白
-        #pyxel.bltm(0, 0, 0, 0, 0, 256, 256)
-
-        pyxel.text(80, 120, "room", 7) 
         
         pyxel.text(10, 30, f"DAY: {self.chara_data.day}", 7)
         pyxel.text(10, 40, f"HP: {self.chara_data.HP}", 8)
@@ -122,7 +122,6 @@ class RoomScreen(Popup):
         pyxel.text(10, 60, f"TAIL:{self.chara_data.tail:.1f}", 7)
         pyxel.text(10, 70, f"SIZE:{self.chara_data.outsidesize[index]}", 7)
         pyxel.text(10, 80, f"IQ:{self.chara_data.IQ:.1f}", 7)
-        pyxel.text(10, 90, f"HP:{self.chara_data.HP}", 7)
 
         #病気中なら警告を出す
         if self.chara_data.diseases:

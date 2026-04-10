@@ -9,6 +9,7 @@ from .DS_08_meal import meal
 from .DS_04_bath import Bath
 from .DS_12_shop import ShopScreen
 from .DS_03_toilet import ToiletScreen
+from .DS_09_gameover import Gameover
 
 
 #ここで画面遷移を行います。
@@ -29,7 +30,8 @@ class ScreenManager:
             "meal": meal,
             "bath": Bath,
             "shop": ShopScreen,
-            "toilet": ToiletScreen
+            "toilet": ToiletScreen,
+            "gameover": Gameover
         }
     def update(self):
         self.current_screen.update()
