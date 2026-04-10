@@ -1,4 +1,5 @@
 import pyxel
+import random
 from .base import Popup
 
 class RoomScreen(Popup):
@@ -6,9 +7,10 @@ class RoomScreen(Popup):
         super().__init__(game_data, chara_data)
         self.chara_data = chara_data
         self.game_data = game_data
+        self.font = pyxel.Font("misaki_gothic.bdf")
 
         self.chara_data.size = self.chara_data.size + 3.2
-
+        self.daily_report = [] #ダメージや感染ログを保持
         # プログラムの場所を基準に assets フォルダ内のファイルを指定
         #path = os.path.join(os.path.dirname(__file__),"..", "..", "assets", "room.pyxres")
         #pyxel.load(path)
@@ -54,6 +56,31 @@ class RoomScreen(Popup):
         self.is_animating = True
         self.anim_timer = 0
         self.old_day = self.chara_data.day
+
+        self.daily_report = []
+
+        # 1. 既に罹患している病気からのダメージ処理
+        for disease in self.chara_data.diseases:
+            atk = self.chara_data.DISEASE_MASTER[disease]["atk"]
+            self.chara_data.HP -= atk
+            self.daily_report.append(f"VIRUS DMG: -{atk} ({disease})")
+
+        # 2. 新しい病気にかかる判定（例: 20%の確率で罹患）
+        infection_rate = 0.20
+        if random.random() < infection_rate:
+            # まだかかっていない病気をリストアップ
+            possible_diseases = [d for d in self.chara_data.DISEASE_MASTER.keys() if d not in self.chara_data.diseases]
+            
+            if possible_diseases:
+                # ランダムで1つ選んでリストに追加
+                new_disease = random.choice(possible_diseases)
+                self.chara_data.diseases.append(new_disease)
+                self.daily_report.append(f"WARNING: Infected with [{new_disease}]")
+
+        # HPが0以下にならないようにする（将来的にここでゲームオーバー判定も可能）
+        if self.chara_data.HP < 0:
+            self.chara_data.HP = 0
+
         #次の日
         self.chara_data.day += 1
         self.chara_data.turn = 3
@@ -62,7 +89,7 @@ class RoomScreen(Popup):
         #アニメーション専用画面
         if self.is_animating:
             pyxel.cls(0)
-            
+
             if self.anim_timer < 20:
                 #古い日付だけ表示
                 pyxel.text(100, 120, f"DAY {self.old_day}", 7)
@@ -72,6 +99,10 @@ class RoomScreen(Popup):
             else:
                 #新しい日付だけ表示
                 pyxel.text(100, 120, f"DAY {self.chara_data.day}", 7)
+            #ダメージや感染のレポートを表示
+            for i, log in enumerate(self.daily_report):
+                color = 8 if "DMG" in log or "WARNING" in log else 7
+                pyxel.text(60, 130 + (i * 15), log, color)
             return
         pyxel.cls(0)
 
@@ -92,6 +123,10 @@ class RoomScreen(Popup):
         pyxel.text(10, 70, f"SIZE:{self.chara_data.outsidesize[index]}", 7)
         pyxel.text(10, 80, f"IQ:{self.chara_data.IQ:.1f}", 7)
         pyxel.text(10, 90, f"HP:{self.chara_data.HP}", 7)
+
+        #病気中なら警告を出す
+        if self.chara_data.diseases:
+            pyxel.text(10, 45, "STATUS: SICK!", 8,self.font)
                 
         #親クラスのdrawを呼び出して、メニューボタンやポップアップ
         super().draw()
