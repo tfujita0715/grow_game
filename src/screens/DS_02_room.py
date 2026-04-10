@@ -11,11 +11,7 @@ class RoomScreen(Popup):
 
         self.chara_data.size = self.chara_data.size + 3.2
         self.daily_report = [] #ダメージや感染ログを保持
-        # プログラムの場所を基準に assets フォルダ内のファイルを指定
-        #path = os.path.join(os.path.dirname(__file__),"..", "..", "assets", "room.pyxres")
-        #pyxel.load(path)
-        #print(path)
-        pyxel.load("assets/room.pyxres")
+        
         
         if self.game_data.is_first_play:
             self.game_data.money += 10000
@@ -89,7 +85,11 @@ class RoomScreen(Popup):
         self.chara_data.turn = 3
 
     def draw(self):
+        pyxel.load("assets/room.pyxres")
         pyxel.bltm(0, 0, 0, 0, 0, 256, 256) 
+
+        pyxel.load("assets/character.pyxres")
+        pyxel.blt(100, 100, 0, 0, 0, 48, 48, 1)
 
         #アニメーション専用画面
         if self.is_animating:
