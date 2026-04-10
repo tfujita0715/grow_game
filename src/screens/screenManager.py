@@ -5,7 +5,7 @@ from .DS_01_title import title
 from .DS_11_setting import SettingScreen
 from .DS_02_room import RoomScreen
 from .DS_16_hospital import HospitalScreen
-#from .DS_08_meal import meal
+from .DS_08_meal import meal
 from .DS_04_bath import Bath
 from .DS_12_shop import ShopScreen
 from .DS_03_toilet import ToiletScreen
@@ -26,7 +26,7 @@ class ScreenManager:
             "setting": SettingScreen,
             "room": RoomScreen,
             "hospital": HospitalScreen,
-            #"meal": meal,
+            "meal": meal,
             "bath": Bath,
             "shop": ShopScreen,
             "toilet": ToiletScreen
