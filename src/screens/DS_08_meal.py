@@ -68,8 +68,12 @@ class meal(Popup):
 
         byte_price = self.game_data.items["Byte Bites"]["price"]
         pyxel.text(10, 10, f"PRICE: {byte_price}G", 7)
-        heal_amount = self.game_data.items["Cookie"]["hp"]
-        self.chara_data.HP += heal_amount
+
+        self.chara_data.HP += food["hp"]
+        self.chara_data.tail += food["tail"]
+        self.chara_data.size += food["size"]
+        self.chara_data.IQ += food["iq"]
+        
 
             
     def choose(self, food, have):
