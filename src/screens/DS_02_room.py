@@ -7,6 +7,8 @@ class RoomScreen(Popup):
         self.chara_data = chara_data
         self.game_data = game_data
 
+        self.chara_data.size = self.chara_data.size + 3.2
+
         # プログラムの場所を基準に assets フォルダ内のファイルを指定
         #path = os.path.join(os.path.dirname(__file__),"..", "assets", "room.pyxres")
         #pyxel.load(path)
@@ -40,13 +42,8 @@ class RoomScreen(Popup):
             #Qキーでの終了
             if pyxel.btnp(pyxel.KEY_Q):
                 self.nextturn()
-            
-            #Wキーでターン消費（テスト用）
-            if pyxel.btnp(pyxel.KEY_W):
-                if self.chara_data.turn > 0:
-                    self.chara_data.turn -= 1
 
-            #マウスでの「一日を終わる」ボタンクリック判定
+            #マウスでの一日を終わるボタンクリック判定
             if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
                 if 180 <= pyxel.mouse_x <= 245 and 230 <= pyxel.mouse_y <= 245:
                     self.nextturn()
@@ -77,8 +74,8 @@ class RoomScreen(Popup):
             return
         pyxel.cls(0)
 
-        pyxel.rect(180, 230, 65, 15, 5) # 色は5（濃い青）
-        pyxel.text(194, 235, "END DAY", 7) # テキストは白
+        pyxel.rect(180, 230, 65, 15, 5) #色は5（濃い青）
+        pyxel.text(194, 235, "END DAY", 7) #テキストは白
 
         pyxel.text(80, 120, "room", 7) 
         
@@ -86,9 +83,11 @@ class RoomScreen(Popup):
         pyxel.text(10, 40, f"HP: {self.chara_data.HP}", 8)
 
         pyxel.text(10, 50, f"MONEY: {self.game_data.money}", 10)
+        # sizeがdouble型（Pythonではfloat）と仮定
 
+        index = int(self.chara_data.size)
         pyxel.text(10, 60, f"TAIL:{self.chara_data.tail:.1f}", 7)
-        pyxel.text(10, 70, f"SIZE:{self.chara_data.size:.1f}", 7)
+        pyxel.text(10, 70, f"SIZE:{self.chara_data.outsidesize[index]}", 7)
         pyxel.text(10, 80, f"IQ:{self.chara_data.IQ:.1f}", 7)
         pyxel.text(10, 90, f"HP:{self.chara_data.HP}", 7)
                 

@@ -12,6 +12,8 @@ class GameData:
         self.volume = 5
         self.username = ""
         #setting
+        self.is_first_play = True   #初回起動フラグ
+
         self.money = 0
         self.hungerLevel = 100   #空腹度
         self.unko   = 0        #キャッシュ（うんち）
@@ -54,11 +56,6 @@ class GameData:
                     self.volume = data.get("volume", 5)
                     self.username = data.get("username", "")
 
-class SettingData:
-    def __init__(self):
-        self.volume = 5
-
-
 class CharacterData:
     def __init__(self):
         self.turn = 3        #残りのターン数
@@ -70,7 +67,14 @@ class CharacterData:
         self.g = 0
         self.b = 0    
         self.tail = 0        #尻尾
-        self.size = 0        #大きさ
+        self.size = 0.0 #内部サイズ
+        self.outsidesize = [
+            "1B","2B","4B","8B","16B","32B","64B","128B","256B","512B",
+            "1KB","2KB","4KB","8KB","16KB","32KB","64KB","128KB","256KB","512KB",
+            "1MB", "2MB", "4MB", "8MB", "16MB", "32MB", "64MB", "128MB", "256MB", "512MB",
+            "1GB", "2GB", "4GB", "8GB", "16GB", "32GB", "64GB", "128GB", "256GB", "512GB",
+            "1TB", "2TB", "4TB", "8TB", "16TB", "32TB", "64TB", "128TB", "256TB", "512TB",
+                     ]        #大きさ
         self.IQ = 0          #賢さ
         #病気
         self.security = 0    #セキュリティ

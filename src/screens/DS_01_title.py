@@ -18,4 +18,4 @@ class title(Popup):
 
         #pyxel.bltm(0, 0, 0, 0, 0, 256, 256)
         pyxel.text(80, 120, "Turing Pet", 20)
-        pyxel.text(190, 120, "plz push space start",5)
+        pyxel.text(80, 140, "plz push space start",5)
