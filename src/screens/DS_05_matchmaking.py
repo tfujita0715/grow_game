@@ -11,7 +11,7 @@ class MatchMaking(BaseScreen):
         
 
     def update(self):
-        if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             #遺伝子検査ボタン
             if 97 < pyxel.mouse_x < 160 and 130 < pyxel.mouse_y < 157:
                 self.test_btn = True

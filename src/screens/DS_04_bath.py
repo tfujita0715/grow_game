@@ -8,7 +8,7 @@ class Bath(BaseScreen):
         #pyxel.load("bath.pyxres")
     
     def update(self):
-        if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             #17,192,,,118,224
             #140,193,,,240,225
             #セキュリティ風呂ボタン
