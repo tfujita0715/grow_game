@@ -46,7 +46,9 @@ class GameData:
         self.SSD = 0
         self.Pi = 0
         self.Natto = 0
-        self.BathBombRp = 0
+
+        #入浴剤の所持数
+        self.BathBombRp = 1
         self.BathBombRm = 0
         self.BathBombGp = 0
         self.BathBombGm = 0
@@ -94,7 +96,7 @@ class CharacterData:
                      ]        #大きさ
         self.IQ = 0          #賢さ
         #病気
-        self.security = 0    #セキュリティ
+        self.security = 50    #セキュリティ
         self.diseases = []   #病気リスト
 
         #病気データ定義
