@@ -17,5 +17,5 @@ class title(Popup):
     def draw(self):
 
         #pyxel.bltm(0, 0, 0, 0, 0, 256, 256)
-        pyxel.text(80, 120, "title", 20)
+        pyxel.text(80, 120, "Turing Pet", 20)
         pyxel.text(190, 120, "plz push space",5)
