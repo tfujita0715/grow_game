@@ -107,8 +107,8 @@ class Popup(BaseScreen):
             elif 163 < pyxel.mouse_x < 215 and 109 < pyxel.mouse_y < 161:
                 self.next_screen = "bath"
 
-            elif 70 < pyxel.mouse_x < 122 and 169 < pyxel.mouse_y < 221:
-                self.next_screen = "meal"
+            #elif 70 < pyxel.mouse_x < 122 and 169 < pyxel.mouse_y < 221:
+                #self.next_screen = "meal"
 
 
             
