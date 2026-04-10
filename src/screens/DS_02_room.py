@@ -74,8 +74,15 @@ class RoomScreen(Popup):
 
         pyxel.text(80, 120, "room", 7) 
         
-        pyxel.text(30, 10, f"DAY: {self.chara_data.day}", 7)
-        pyxel.text(30, 30, f"HP: {self.chara_data.HP}", 8)
+        pyxel.text(10, 30, f"DAY: {self.chara_data.day}", 7)
+        pyxel.text(10, 40, f"HP: {self.chara_data.HP}", 8)
+
+        pyxel.text(10, 50, f"MONEY: {self.game_data.money}", 10)
+
+        pyxel.text(10, 60, f"TAIL:{self.chara_data.tail:.1f}", 7)
+        pyxel.text(10, 70, f"SIZE:{self.chara_data.size:.1f}", 7)
+        pyxel.text(10, 80, f"IQ:{self.chara_data.IQ:.1f}", 7)
+        pyxel.text(10, 90, f"HP:{self.chara_data.HP}", 7)
                 
         #親クラスのdrawを呼び出して、メニューボタンやポップアップ
         super().draw()
