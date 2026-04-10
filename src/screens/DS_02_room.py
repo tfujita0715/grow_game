@@ -16,7 +16,9 @@ class RoomScreen(Popup):
         #pyxel.load(r"assets\room.pyxres")
         #pyxel.load("C:/pyxel/grow2/grow_game/assets/room.pyxres")
         
-
+        if self.game_data.is_first_play:
+            self.game_data.money += 10000
+            self.game_data.is_first_play = False
 
         #アニメーション用の変数
         self.is_animating = False  #アニメーション中かどうかのフラグ
